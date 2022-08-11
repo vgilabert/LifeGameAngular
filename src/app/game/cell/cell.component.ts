@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Cell} from "../../../classes/Cell";
 
 @Component({
   selector: 'app-cell',
@@ -7,11 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CellComponent implements OnInit {
 
-  private _state: number;
+  @Input() cell!: Cell;
 
-  constructor() { }
+  constructor() {
 
-  ngOnInit(): void {
   }
 
+  ngOnInit(): void {
+    console.log(this.cell.status)
+  }
+
+  onOver(e: MouseEvent) {
+    if(e.buttons === 1)
+      this.cell.status = this.cell.status === 1 ? 0 : 1;
+
+    console.log(this.cell.status)
+  }
+
+  getCellClass() {
+    if (this.cell.isAlive()) {
+      return 'alive';
+    } else {
+      return 'dead';
+    }
+  }
 }
