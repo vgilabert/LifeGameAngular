@@ -18,18 +18,20 @@ export class CellComponent implements OnInit {
     console.log(this.cell.status)
   }
 
-  onOver(e: MouseEvent) {
-    if(e.buttons === 1)
-      this.cell.status = this.cell.status === 1 ? 0 : 1;
-
-    console.log(this.cell.status)
-  }
-
   getCellClass() {
     if (this.cell.isAlive()) {
       return 'alive';
     } else {
       return 'dead';
     }
+  }
+
+  onMouseEnter(e: MouseEvent) {
+    if(e.buttons === 1)
+      this.cell.status = this.cell.status === 1 ? 0 : 1;
+  }
+
+  onMouseDown() {
+    this.cell.status = this.cell.status === 1 ? 0 : 1;
   }
 }

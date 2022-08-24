@@ -8,7 +8,7 @@ import {Cell} from "../../../classes/Cell";
 })
 export class GridComponent implements OnInit {
 
-  public size: number = 50;
+  public size: number = 35;
   grid: Cell[][] = [];
 
   constructor() {
@@ -73,6 +73,15 @@ export class GridComponent implements OnInit {
           currentCell.isDead() ? currentCell.born() : currentCell.die();
           currentCell.switch = false;
         }
+      }
+    }
+  }
+
+  reset() {
+    for (let i = 0; i < this.grid.length; i++) {
+      for (let j = 0; j < this.grid[i].length; j++) {
+        const currentCell: Cell = this.grid[i][j];
+        currentCell.die();
       }
     }
   }

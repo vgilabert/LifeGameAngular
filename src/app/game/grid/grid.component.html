@@ -2,9 +2,10 @@
   <table>
     <tr *ngFor="let row of grid">
       <td *ngFor="let cell of row">
-        <app-cell [cell]="cell"></app-cell>
+        <app-cell
+          [cell]="cell"
+        ></app-cell>
       </td>
     </tr>
   </table>
 </div>
-<button (click)="displayCell()">TEST</button>

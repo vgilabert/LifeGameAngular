@@ -20,13 +20,20 @@ export class GameComponent implements OnInit {
   }
 
   myFunc() {
-    console.log("called")
     this.gridComponent.update();
     this.gridComponent.switchCells();
   }
 
   start() {
-    this.sub = interval(100)
+    this.sub = interval(200)
       .subscribe(() => { this.myFunc(); });
+  }
+
+  stop() {
+    this.sub.unsubscribe();
+  }
+
+  reset() {
+    this.gridComponent.reset();
   }
 }
